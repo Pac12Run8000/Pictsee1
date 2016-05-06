@@ -19,6 +19,7 @@ class TableViewController: UITableViewController, NSFetchedResultsControllerDele
         frc = NSFetchedResultsController(fetchRequest: listFetchRequest(), managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         return frc
           }
+    /*** Blahhh ***/
 
     override func viewDidLoad() {
         super.viewDidLoad()
