@@ -103,10 +103,22 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem systemItem="action" id="Nij-Mc-xXc"/>
-                        <barButtonItem width="46" style="plain" systemItem="fixedSpace" id="aFx-OV-592"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="BfY-Pb-c13"/>
                         <barButtonItem systemItem="camera" id="eaQ-Qu-jWZ"/>
-                        <barButtonItem width="46" style="plain" systemItem="fixedSpace" id="fca-DX-vQ1"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="fr4-UL-kX5"/>
                         <barButtonItem systemItem="organize" id="i5i-YX-Tt2"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8hd-mr-YlI"/>
+                        <barButtonItem title="F1" id="7xo-7O-7La">
+                            <color key="tintColor" red="0.83288971349999996" green="1" blue="0.53535524270000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="WAT-Oy-f9J"/>
+                        <barButtonItem title="F2" id="6e6-q1-9S7">
+                            <color key="tintColor" red="1" green="0.68321398450000004" blue="0.41996188280000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="RQn-eA-s4Q"/>
+                        <barButtonItem title="F3" id="tq1-Cx-D8w">
+                            <color key="tintColor" red="0.29276174869999999" green="0.44526001669999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Image Details" id="0sV-wd-aFk">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="okC-Kg-fqu">
