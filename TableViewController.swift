@@ -69,6 +69,8 @@ class TableViewController: UITableViewController, NSFetchedResultsControllerDele
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         let list = frc.objectAtIndexPath(indexPath) as! ImageList
         cell.detailTextLabel?.text = list.desc
+        //cell.textLabel?.text = list.title
+        cell.textLabel!.text = String()
        
 
         return cell
