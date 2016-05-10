@@ -26,6 +26,40 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
         self.presentViewController(pickerController, animated: true, completion: nil)
     }
     
+    @IBAction func filter1(sender: AnyObject) {
+        guard let image = imgDisplay.image, cgimg = image.CGImage else {
+            print("imgDisplay doesn't have an image")
+            return
+        }
+        let openGLContext = EAGLContext(API: .OpenGLES2)
+        let context = CIContext(EAGLContext: openGLContext!)
+        
+        let coreImage = CIImage(CGImage: cgimg)
+        
+        let sepiaFilter = CIFilter(name: "CISepiaTone")
+        sepiaFilter?.setValue(coreImage, forKey: kCIInputImageKey)
+        sepiaFilter?.setValue(0.5, forKey: kCIInputIntensityKey)
+        
+        if let sepiaOut = sepiaFilter?.valueForKey(kCIOutputImageKey) as? CIImage {
+            let gammaFilter = CIFilter(name: "CIGammaAdjust")
+            gammaFilter?.setValue(sepiaOut, forKey: kCIInputImageKey)
+            gammaFilter?.setValue(1.50, forKey: "inputPower")
+            if let exposureOutPut = gammaFilter?.valueForKey(kCIOutputImageKey) as? CIImage {
+                let outPut = context.createCGImage(exposureOutPut, fromRect: exposureOutPut.extent)
+                let results = UIImage(CGImage: outPut)
+                self.imgDisplay.image = results
+            }
+        }
+    }
+    
+    @IBAction func filter2(sender: AnyObject) {
+    }
+    
+    @IBAction func filter3(sender: AnyObject) {
+    }
+    
+    @IBAction func clearFilter(sender: AnyObject) {
+    }
     
     @IBAction func btnAddCameraImage(sender: AnyObject) {
         let pickerController = UIImagePickerController()
@@ -57,7 +91,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
     
     func editItem() {
         nImage?.desc = txtAreaDesc.text
-        if (self.imgDisplay != nil) {
+        if (self.imgDisplay.image != nil) {
             nImage?.image = UIImagePNGRepresentation(self.imgDisplay.image!)
         }
         do {

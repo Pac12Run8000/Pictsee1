@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Pictsee Images-->
@@ -71,34 +72,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5C-6U-nFL">
-                                <rect key="frame" x="175" y="130" width="250" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="caption" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X5C-6U-nFL">
+                                <rect key="frame" x="0.0" y="130" width="600" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="IgG-QE-7p5"/>
-                                    <constraint firstAttribute="height" constant="30" id="muj-5z-emo"/>
+                                    <constraint firstAttribute="height" constant="30" id="2bh-ae-sDR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SpR-eH-GMK">
-                                <rect key="frame" x="175" y="180" width="250" height="250"/>
+                                <rect key="frame" x="0.0" y="180" width="600" height="376"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="FcZ-i1-cQu"/>
-                                    <constraint firstAttribute="width" constant="250" id="XzQ-bc-wlp"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="cxb-JC-76h"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="ocK-ck-cB8"/>
-                                    <constraint firstAttribute="height" constant="250" id="pGH-gH-X0Y"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="va4-XL-JDS"/>
-                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SpR-eH-GMK" firstAttribute="top" secondItem="X5C-6U-nFL" secondAttribute="bottom" constant="20" id="4l1-dn-j8i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="X5C-6U-nFL" secondAttribute="trailing" constant="-20" id="3MD-QP-hm9"/>
                             <constraint firstItem="X5C-6U-nFL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JtG-in-ZYd"/>
-                            <constraint firstItem="X5C-6U-nFL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="66" id="jL0-Ec-wAU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SpR-eH-GMK" secondAttribute="trailing" constant="-20" id="K69-zj-0Ke"/>
+                            <constraint firstItem="X5C-6U-nFL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="66" id="Ndn-gb-xlE"/>
                             <constraint firstItem="SpR-eH-GMK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lqh-rZ-1FS"/>
+                            <constraint firstItem="SpR-eH-GMK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="tDq-OK-RaD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="SpR-eH-GMK" secondAttribute="bottom" id="utK-HZ-SqO"/>
+                            <constraint firstItem="SpR-eH-GMK" firstAttribute="top" secondItem="X5C-6U-nFL" secondAttribute="bottom" constant="20" id="xhn-vg-Ca8"/>
+                            <constraint firstItem="X5C-6U-nFL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="zP6-CJ-KlO"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -118,14 +115,29 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="8hd-mr-YlI"/>
                         <barButtonItem title="F1" id="7xo-7O-7La">
                             <color key="tintColor" red="0.83288971349999996" green="1" blue="0.53535524270000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="filter1:" destination="BYZ-38-t0r" id="sZF-I4-vWA"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="WAT-Oy-f9J"/>
                         <barButtonItem title="F2" id="6e6-q1-9S7">
                             <color key="tintColor" red="1" green="0.68321398450000004" blue="0.41996188280000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="filter2:" destination="BYZ-38-t0r" id="aWZ-tN-tnT"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="RQn-eA-s4Q"/>
                         <barButtonItem title="F3" id="tq1-Cx-D8w">
                             <color key="tintColor" red="0.29276174869999999" green="0.44526001669999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="filter3:" destination="BYZ-38-t0r" id="2d6-2h-pUD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="0zh-AC-4cA"/>
+                        <barButtonItem title="Revert" id="5Bt-JJ-Cht">
+                            <connections>
+                                <action selector="clearFilter:" destination="BYZ-38-t0r" id="McE-YA-P41"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Image Details" id="0sV-wd-aFk">
@@ -147,7 +159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="340"/>
+            <point key="canvasLocation" x="1206" y="310"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mKE-hd-ZTG">
