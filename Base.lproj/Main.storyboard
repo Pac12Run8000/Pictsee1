@@ -80,7 +80,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SpR-eH-GMK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SpR-eH-GMK">
                                 <rect key="frame" x="0.0" y="180" width="600" height="376"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -131,12 +131,6 @@
                             <color key="tintColor" red="0.29276174869999999" green="0.44526001669999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="filter3:" destination="BYZ-38-t0r" id="2d6-2h-pUD"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="0zh-AC-4cA"/>
-                        <barButtonItem title="Revert" id="5Bt-JJ-Cht">
-                            <connections>
-                                <action selector="clearFilter:" destination="BYZ-38-t0r" id="McE-YA-P41"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>

@@ -53,13 +53,50 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
     }
     
     @IBAction func filter2(sender: AnyObject) {
+        guard let image = imgDisplay.image, cgimg = image.CGImage else {
+            print("There is no image")
+            return
+        }
+        let openGLContext = EAGLContext(API: .OpenGLES2)
+        let context = CIContext(EAGLContext: openGLContext!)
+        
+        let coreImage = CIImage(CGImage: cgimg)
+        
+        let chromeFilter = CIFilter(name: "CIPhotoEffectChrome")
+        chromeFilter?.setValue(coreImage, forKey: kCIInputImageKey)
+        
+        if let chromeFilterOut = chromeFilter?.valueForKey(kCIOutputImageKey) as? CIImage {
+            let photoEffectFilter = CIFilter(name: "CIPhotoEffectInstant")
+            photoEffectFilter?.setValue(chromeFilterOut, forKey: kCIInputImageKey)
+            
+            if let exposureOutPut = photoEffectFilter?.valueForKey(kCIOutputImageKey) as? CIImage {
+                let output = context.createCGImage(exposureOutPut, fromRect: exposureOutPut.extent)
+                let results = UIImage(CGImage: output)
+                imgDisplay.image = results
+            }
+        }
     }
     
     @IBAction func filter3(sender: AnyObject) {
+        guard let image = imgDisplay.image, cgimg = image.CGImage else {
+            print("There is no image!")
+            return
+        }
+        let openGLContext = EAGLContext(API: .OpenGLES2)
+        let context = CIContext(EAGLContext: openGLContext!)
+        
+        let coreImage = CIImage(CGImage: cgimg)
+        
+        let PhotoEffectProcessFilter = CIFilter(name: "CIPhotoEffectProcess")
+        PhotoEffectProcessFilter?.setValue(coreImage, forKey: kCIInputImageKey)
+        
+        if let photoProcessOutPut = PhotoEffectProcessFilter?.valueForKey(kCIOutputImageKey) as? CIImage {
+            let output = context.createCGImage(photoProcessOutPut, fromRect: photoProcessOutPut.extent)
+            let results = UIImage(CGImage: output)
+            self.imgDisplay.image = results        }
     }
     
-    @IBAction func clearFilter(sender: AnyObject) {
-    }
+    
     
     @IBAction func btnAddCameraImage(sender: AnyObject) {
         let pickerController = UIImagePickerController()
@@ -108,7 +145,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
         let listItem = ImageList(entity: ent!, insertIntoManagedObjectContext: ManObjCon)
         listItem.desc = txtAreaDesc.text
         
-         if (self.imgDisplay != nil) {
+         if (self.imgDisplay.image != nil) {
             listItem.image = UIImagePNGRepresentation(self.imgDisplay.image!)
          }
         
