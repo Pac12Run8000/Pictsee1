@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AssetsLibrary
 
 class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -120,6 +121,24 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
         }
         dismissVC()
     }
+    
+    @IBAction func btnSaveToFolder(sender: AnyObject) {
+        CustomPhotoAlbum.sharedInstance.saveImage(self.imgDisplay.image!)
+        print("image saved")
+        /*** Issues ***
+        guard let image = imgDisplay.image, cgimg = image.CIImage else {
+            print("There is no image!")
+            return
+        }
+        let imageToSave = cgimg
+        let softwareContext = CIContext(options:[kCIContextUseSoftwareRenderer: true])
+        let myimage = softwareContext.createCGImage(imageToSave, fromRect:imageToSave.extent)
+        
+        let library = ALAssetsLibrary()
+        library.writeImageToSavedPhotosAlbum(myimage, metadata: imageToSave.properties, completionBlock: nil)
+         Issues ***/
+    }
+    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         self.dismissViewControllerAnimated(true, completion: nil)

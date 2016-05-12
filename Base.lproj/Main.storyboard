@@ -58,7 +58,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yv-Np-Qvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="464" y="340"/>
+            <point key="canvasLocation" x="334" y="335"/>
         </scene>
         <!--Image Details-->
         <scene sceneID="tne-QT-ifu">
@@ -99,29 +99,40 @@
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem systemItem="action" id="Nij-Mc-xXc"/>
+                        <barButtonItem systemItem="action" id="Nij-Mc-xXc">
+                            <color key="tintColor" red="0.81284105038986998" green="0.3980597674307973" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="BfY-Pb-c13"/>
                         <barButtonItem systemItem="camera" id="eaQ-Qu-jWZ">
+                            <color key="tintColor" red="0.62238219895287961" green="0.069226933463453114" blue="0.30654510371297478" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="btnAddCameraImage:" destination="BYZ-38-t0r" id="dUv-6u-PIR"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="fr4-UL-kX5"/>
                         <barButtonItem systemItem="organize" id="i5i-YX-Tt2">
+                            <color key="tintColor" red="0.019796949292523614" green="0.53176128926701571" blue="0.35891818447704943" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="btnAddImage:" destination="BYZ-38-t0r" id="Icx-4L-Gp8"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="H8n-7l-GQx"/>
+                        <barButtonItem systemItem="organize" id="9qO-vG-fGN">
+                            <color key="tintColor" red="0.14501351730254225" green="0.74646090961130196" blue="0.81339986910994766" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="btnSaveToFolder:" destination="BYZ-38-t0r" id="wCl-eh-qPr"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="8hd-mr-YlI"/>
                         <barButtonItem title="F1" id="7xo-7O-7La">
-                            <color key="tintColor" red="0.83288971349999996" green="1" blue="0.53535524270000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.43413226702667262" green="0.52407149869109948" blue="0.27941133034889126" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="filter1:" destination="BYZ-38-t0r" id="sZF-I4-vWA"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="WAT-Oy-f9J"/>
                         <barButtonItem title="F2" id="6e6-q1-9S7">
-                            <color key="tintColor" red="1" green="0.68321398450000004" blue="0.41996188280000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.71112156413612571" green="0.4870471463079209" blue="0.29729288414605942" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="filter2:" destination="BYZ-38-t0r" id="aWZ-tN-tnT"/>
                             </connections>
@@ -153,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1206" y="310"/>
+            <point key="canvasLocation" x="1011" y="335"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mKE-hd-ZTG">
