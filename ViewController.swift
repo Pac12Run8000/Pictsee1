@@ -15,6 +15,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
     let ManObjCon = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     var nImage:ImageList? = nil
+    var alertController:UIAlertController!
 
     @IBOutlet weak var txtAreaDesc: UITextField!
    
@@ -123,20 +124,11 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
     }
     
     @IBAction func btnSaveToFolder(sender: AnyObject) {
-        CustomPhotoAlbum.sharedInstance.saveImage(self.imgDisplay.image!)
-        print("image saved")
-        /*** Issues ***
-        guard let image = imgDisplay.image, cgimg = image.CIImage else {
-            print("There is no image!")
-            return
-        }
-        let imageToSave = cgimg
-        let softwareContext = CIContext(options:[kCIContextUseSoftwareRenderer: true])
-        let myimage = softwareContext.createCGImage(imageToSave, fromRect:imageToSave.extent)
         
-        let library = ALAssetsLibrary()
-        library.writeImageToSavedPhotosAlbum(myimage, metadata: imageToSave.properties, completionBlock: nil)
-         Issues ***/
+        self.presentViewController(alertController, animated: true) { 
+            (ACTION) -> Void in
+                print("action sheet used")
+        }
     }
     
     
@@ -185,6 +177,28 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        alertController = UIAlertController(title: "Where do you want your image?", message: "Save image to (Pictsee) folder or share on social media.", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let emailAction = UIAlertAction(title: "Email", style: UIAlertActionStyle.Default) {(ACTION) -> Void in
+            print("send image to email")
+        }
+        let facebookAction = UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default) {(ACTION) -> Void in
+            print("share on Facebook")
+        }
+        let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default) { (ACTION) -> Void in
+            print("share on Twitter")
+        }
+        let folderAction = UIAlertAction(title: "Folder", style: UIAlertActionStyle.Cancel) { (ACTION) -> Void in
+            CustomPhotoAlbum.sharedInstance.saveImage(self.imgDisplay.image!)
+            print("Saved to Folder")
+        }
+        
+        
+        alertController.addAction(emailAction)
+        alertController.addAction(facebookAction)
+        alertController.addAction(twitterAction)
+        alertController.addAction(folderAction)
+       
+        
         if (nImage != nil) {
             txtAreaDesc.text = nImage?.desc
             if (nImage?.image != nil) {
