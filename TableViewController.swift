@@ -11,6 +11,8 @@ import CoreData
 
 class TableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
+   
+    
     var context:NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     var frc:NSFetchedResultsController = NSFetchedResultsController()
@@ -66,11 +68,17 @@ class TableViewController: UITableViewController, NSFetchedResultsControllerDele
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
         let list = frc.objectAtIndexPath(indexPath) as! ImageList
-        cell.detailTextLabel?.text = list.desc
+        //cell.imageView?.image = UIImage(data: (myList.lImage)!)
+        if (list.image != nil) {
+            cell.cellBgImage.image = UIImage(data: (list.image)!)
+        }
+        cell.cellLabelCaption.text = list.desc
+        
+        //cell.detailTextLabel?.text = list.desc
         //cell.textLabel?.text = list.title
-        cell.textLabel!.text = String()
+        //cell.textLabel!.text = String()
        
 
         return cell

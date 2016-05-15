@@ -10,35 +10,53 @@
         <scene sceneID="VhS-Db-w1H">
             <objects>
                 <tableViewController id="bwf-wF-l3O" customClass="TableViewController" customModule="Pictsee1" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="bDG-hW-mAB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" id="bDG-hW-mAB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="pKs-Se-7L9" detailTextLabel="iz5-P9-UbB" style="IBUITableViewCellStyleSubtitle" id="CPJ-wZ-6hh">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="250" id="CPJ-wZ-6hh" customClass="CustomCell" customModule="Pictsee1" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CPJ-wZ-6hh" id="QHj-TW-mrA">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="249.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pKs-Se-7L9">
-                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iz5-P9-UbB">
-                                            <rect key="frame" x="15" y="25.5" width="30.5" height="13.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hXr-8g-Ss1">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="249.5"/>
+                                        </imageView>
+                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQy-Kf-IOs">
+                                            <rect key="frame" x="0.0" y="185" width="600" height="64"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePo-JL-IBI">
+                                                    <rect key="frame" x="8" y="8" width="584" height="48"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="ePo-JL-IBI" firstAttribute="top" secondItem="aQy-Kf-IOs" secondAttribute="top" constant="8" id="gIC-3e-Bi3"/>
+                                                <constraint firstItem="ePo-JL-IBI" firstAttribute="leading" secondItem="aQy-Kf-IOs" secondAttribute="leading" constant="8" id="hix-t1-F4i"/>
+                                                <constraint firstAttribute="bottom" secondItem="ePo-JL-IBI" secondAttribute="bottom" constant="8" id="kCa-J4-dgj"/>
+                                                <constraint firstAttribute="height" constant="64" id="o2Q-OS-u5G"/>
+                                                <constraint firstAttribute="trailing" secondItem="ePo-JL-IBI" secondAttribute="trailing" constant="8" id="qop-fe-YC5"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hXr-8g-Ss1" firstAttribute="top" secondItem="QHj-TW-mrA" secondAttribute="top" id="64o-3O-Zeg"/>
+                                        <constraint firstItem="hXr-8g-Ss1" firstAttribute="leading" secondItem="QHj-TW-mrA" secondAttribute="leading" id="GRw-Qh-2wy"/>
+                                        <constraint firstAttribute="trailing" secondItem="aQy-Kf-IOs" secondAttribute="trailing" id="dSS-dF-NGB"/>
+                                        <constraint firstItem="aQy-Kf-IOs" firstAttribute="leading" secondItem="QHj-TW-mrA" secondAttribute="leading" id="fty-PQ-gQM"/>
+                                        <constraint firstAttribute="trailing" secondItem="hXr-8g-Ss1" secondAttribute="trailing" id="lZN-jw-Xaq"/>
+                                        <constraint firstAttribute="bottom" secondItem="aQy-Kf-IOs" secondAttribute="bottom" id="s8g-gr-xCg"/>
+                                        <constraint firstAttribute="bottom" secondItem="hXr-8g-Ss1" secondAttribute="bottom" id="ssk-OX-LmX"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="cellBgImage" destination="hXr-8g-Ss1" id="wRG-UP-ur9"/>
+                                    <outlet property="cellLabelCaption" destination="ePo-JL-IBI" id="1Tt-VP-8JR"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="editImage" id="72t-eU-9KB"/>
                                 </connections>
                             </tableViewCell>
