@@ -10,13 +10,15 @@ import UIKit
 import CoreData
 import AssetsLibrary
 import Social
+import MessageUI
 
-class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,MFMailComposeViewControllerDelegate {
     
     let ManObjCon = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     var nImage:ImageList? = nil
     var alertController:UIAlertController!
+    var myMailComposer:MFMailComposeViewController?
 
     @IBOutlet weak var txtAreaDesc: UITextField!
    
@@ -188,6 +190,62 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
         
         alertController = UIAlertController(title: "Where do you want your image?", message: "Save image to (Pictsee) folder or share on social media.", preferredStyle: UIAlertControllerStyle.ActionSheet)
         let emailAction = UIAlertAction(title: "Email", style: UIAlertActionStyle.Default) {(ACTION) -> Void in
+            
+            let eCaption:String = (self.nImage?.desc)!
+            
+            let eImage = UIImage(data: (self.nImage?.image)!)
+            let pngImage = UIImagePNGRepresentation(eImage!)
+            
+            if MFMailComposeViewController.canSendMail() {
+                self.myMailComposer = MFMailComposeViewController()
+                
+                self.myMailComposer?.mailComposeDelegate = self
+                self.myMailComposer!.setToRecipients(["test@gmail.com"])
+                self.myMailComposer!.setSubject("caption: \(eCaption)")
+                self.myMailComposer!.setMessageBody("caption: \(eCaption)", isHTML: false)
+                self.presentViewController(self.myMailComposer!, animated: true, completion: nil)
+            } else {
+            
+            }
+            func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+                switch (result.rawValue) {
+                case MFMailComposeResultSent.rawValue:
+                    print("Mail was sent")
+                case MFMailComposeResultFailed.rawValue:
+                    print("Msg Failed")
+                case MFMailComposeResultSaved.rawValue:
+                    print("Mail was saved")
+                default:
+                    print("Nothing")
+                }
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            
+            /**
+            let myMailComposeController = MFMailComposeViewController()
+            myMailComposeController.mailComposeDelegate = self
+            myMailComposeController.setToRecipients(["test@gmail.com"])
+            myMailComposeController.setSubject("caption: \(eCaption)")
+            myMailComposeController.setMessageBody("caption: \(eCaption)", isHTML: false)
+            **/
+            //myMailComposeController.addAttachmentData(pngImage!, mimeType: "image/png", fileName: "image")
+            
+            
+            /**
+            if (MFMailComposeViewController.canSendMail()) {
+                self.presentViewController(myMailComposeController, animated: true, completion: {
+                    
+                })
+            } else {
+                print("Device not configured for email.")
+            }
+            
+            func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+                controller.dismissViewControllerAnimated(true) {() -> Void in
+                }
+            }
+            **/
             print("send image to email")
         }
         let facebookAction = UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default) {(ACTION) -> Void in
