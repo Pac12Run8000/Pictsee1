@@ -25,6 +25,8 @@ class TableViewController: UITableViewController, NSFetchedResultsControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //view in customCell
+        
         frc = getFetchedResultsController()
         frc.delegate = self
         do {
@@ -70,11 +72,17 @@ class TableViewController: UITableViewController, NSFetchedResultsControllerDele
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomCell
         let list = frc.objectAtIndexPath(indexPath) as! ImageList
-        //cell.imageView?.image = UIImage(data: (myList.lImage)!)
         if (list.image != nil) {
             cell.cellBgImage.image = UIImage(data: (list.image)!)
         }
         cell.cellLabelCaption.text = list.desc
+        cell.cellCustomView.backgroundColor = UIColor.clearColor()
+        
+        let gradient:CAGradientLayer = CAGradientLayer()
+        gradient.frame.size = cell.cellCustomView.frame.size
+        gradient.colors = [UIColor.whiteColor().colorWithAlphaComponent(0).CGColor, UIColor.grayColor().CGColor] //Or any colors
+        cell.cellCustomView.layer.addSublayer(gradient)
+        
         
         //cell.detailTextLabel?.text = list.desc
         //cell.textLabel?.text = list.title

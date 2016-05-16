@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import AssetsLibrary
+import Social
 
 class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -177,14 +178,34 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (nImage != nil) {
+            txtAreaDesc.text = nImage?.desc
+            if (nImage?.image != nil) {
+                self.imgDisplay.image = UIImage(data: (nImage?.image)!)
+            }
+        }
+        
         alertController = UIAlertController(title: "Where do you want your image?", message: "Save image to (Pictsee) folder or share on social media.", preferredStyle: UIAlertControllerStyle.ActionSheet)
         let emailAction = UIAlertAction(title: "Email", style: UIAlertActionStyle.Default) {(ACTION) -> Void in
             print("send image to email")
         }
         let facebookAction = UIAlertAction(title: "Facebook", style: UIAlertActionStyle.Default) {(ACTION) -> Void in
-            print("share on Facebook")
+            
+            let vc = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            vc.setInitialText(self.nImage!.desc)
+            let sImage = UIImage(data: (self.nImage?.image)!)
+            vc.addImage(sImage)
+            self.presentViewController(vc, animated: true, completion: nil)
+            print("shared on Facebook")
         }
         let twitterAction = UIAlertAction(title: "Twitter", style: UIAlertActionStyle.Default) { (ACTION) -> Void in
+            
+            let vc1 = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+            vc1.setInitialText(self.nImage!.desc)
+            let tImage = UIImage(data: (self.nImage?.image)!)
+            vc1.addImage(tImage)
+            self.presentViewController(vc1, animated: true, completion: nil)
             print("share on Twitter")
         }
         let folderAction = UIAlertAction(title: "Folder", style: UIAlertActionStyle.Cancel) { (ACTION) -> Void in
@@ -199,12 +220,7 @@ class ViewController: UIViewController, NSFetchedResultsControllerDelegate, UIIm
         alertController.addAction(folderAction)
        
         
-        if (nImage != nil) {
-            txtAreaDesc.text = nImage?.desc
-            if (nImage?.image != nil) {
-                self.imgDisplay.image = UIImage(data: (nImage?.image)!)
-            }
-        }
+        
     }
 
     override func didReceiveMemoryWarning() {

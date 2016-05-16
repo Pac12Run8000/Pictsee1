@@ -10,6 +10,7 @@ import UIKit
 
 class CustomCell: UITableViewCell {
 
+    @IBOutlet weak var cellCustomView: UIView!
     @IBOutlet weak var cellBgImage: UIImageView!
     
     @IBOutlet weak var cellLabelCaption: UILabel!

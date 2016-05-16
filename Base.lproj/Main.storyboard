@@ -25,12 +25,13 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hXr-8g-Ss1">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="249.5"/>
                                         </imageView>
-                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQy-Kf-IOs">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQy-Kf-IOs">
                                             <rect key="frame" x="0.0" y="185" width="600" height="64"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePo-JL-IBI">
                                                     <rect key="frame" x="8" y="8" width="584" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.96024214659685869" green="0.1882532623163945" blue="0.079065372902777764" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -56,6 +57,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cellBgImage" destination="hXr-8g-Ss1" id="wRG-UP-ur9"/>
+                                    <outlet property="cellCustomView" destination="aQy-Kf-IOs" id="76c-cy-D5C"/>
                                     <outlet property="cellLabelCaption" destination="ePo-JL-IBI" id="1Tt-VP-8JR"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="editImage" id="72t-eU-9KB"/>
                                 </connections>
